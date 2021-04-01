@@ -173,6 +173,10 @@ It is worth considering reorganizing your code to be branchless however:
 
 4. Always confirm your efforts at making your code faster actually made your code faster.
 
+## Speed is nice - where is this *really* important?
+
+Shaders. Branchless coding is critical when writing graphics shaders because each core runs in a warp of 16 threads. Each thread executes the same instruction as the other threads in the same warp. `if` statements cause some threads in the warp to stall while others proceed - then reverses the stall to handle the other case.
+
 ## Wisconsin connection
 
 The invention of speculative execution has many contributors including two primary inventors from the University of Wisconsin - Madison: Mark Hill, now retired, and Guri Sohi. I worked for both of these researchers when they were Chairs of the CS department there.
